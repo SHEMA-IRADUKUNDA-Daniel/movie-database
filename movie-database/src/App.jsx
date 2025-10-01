@@ -1,16 +1,16 @@
-import { Route } from "react-router-dom";
 import NavBar from "./header";
 import Search from "./search";
 import Button from "./button";
 import Footer from "./footer";
+
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <NavBar />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="flex-1 max-w-7xl mx-auto px-6 w-full">
         <div>
           <div className="flex flex-col content-center items-center py-4  justify-center">
-            <h1 className="text-4xl font-bold text-primary/80 my-6">
+            <h1 className="text-3xl font-bold text-primary/80 my-6">
               MovieDB App
             </h1>
             <Search
@@ -22,6 +22,7 @@ function App() {
               Moviedb.com - Your better place to discover movies you’ll love.
             </h2>
             <Button
+              to={"/home"}
               title="Go To Home Page"
               className="bg-gradient-to-r from-primary/80 to-primary-light/80 text-white font-bold rounded-full shadow-lg px-10 py-3 mb-3"
             />
@@ -43,7 +44,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,5 @@
-import { Component } from "react";
 import Home from "../src/home";
-import About from "../src/about";
+import Favorite from "../src/favorite";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../src/App";
 import Login from "../src/login";
@@ -14,9 +13,10 @@ const routes = createBrowserRouter([
     path: "/home",
     Component: Home,
   },
+
   {
-    path: "/about",
-    Component: About,
+    path: "/favorite",
+    Component: Favorite,
   },
   {
     path: "/login",

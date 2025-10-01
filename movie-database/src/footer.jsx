@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-r from-primary to-primary-light  text-white shadow">
+    <footer className=" w-full bg-gradient-to-r from-primary to-primary-light  text-white shadow">
       <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-6 md:space-y-0">
         <div>
           <h2 className="text-2xl font-bold text-white">MovieDB App</h2>
