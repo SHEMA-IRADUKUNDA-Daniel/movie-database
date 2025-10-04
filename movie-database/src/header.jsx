@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Search from "./search";
 import { useState } from "react";
-import { getMovies } from "./api/movies";
+import { getMovies } from "./api/tmdb";
 import { useEffect } from "react";
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -70,7 +70,11 @@ export default function NavBar() {
                   className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100"
                 >
                   <img
-                    src={movie.poster_url || movie.poster_path}
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : "https://via.placeholder.com/500x750?text=No+Image"
+                    }
                     alt={movie.title}
                     className="w-10 h-14 object-cover rounded"
                   />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getMovies } from "./api/movies";
+import { getMovies } from "./api/tmdb";
 import Button from "./button";
 import Banner from "./banner";
 
@@ -41,11 +41,15 @@ export default function Home() {
             {movies.map((movie) => (
               <div
                 key={movie.id}
-                className="my-2 mx-2 md:max-w-45 max-w-40 relative cursor-pointer"
+                className="my-2 mx-2 md:max-w-47 max-w-40 relative cursor-pointer"
               >
                 <div to={`/movie/${movie.id}`} className="relative group">
                   <img
-                    src={movie.poster_url}
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : "https://via.placeholder.com/500x750?text=No+Image"
+                    }
                     alt={movie.title}
                     width={200}
                     height={250}
@@ -55,7 +59,7 @@ export default function Home() {
                     }}
                   />
                   <p className="absolute top-2 right-2 flex items-center gap-1 bg-black bg-opacity-70 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md">
-                    {movie.ratings || "9"}
+                    {movie.vote_average.toFixed(1) || "9"}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -78,11 +82,13 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <h2 className="font-bold text-gray-700 mt-3">{movie.title}</h2>
+                <h2 className="font-bold text-gray-700 mt-3 truncate overflow-hidden whitespace-nowrap">
+                  {movie.title}
+                </h2>
                 <div className="flex gap-2 text-xs text-gray-600 font-medium items-center mt-1">
                   <p>{movie.release_date?.slice(0, 4)}</p>
                   <p>-</p>
-                  <p>{movie.duration_minutes} min</p>
+                  <p>{movie.original_language} </p>
                 </div>
               </div>
             ))}

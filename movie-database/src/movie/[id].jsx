@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { fetchMovie } from "../api/movies";
+import { fetchMovie } from "../api/tmdb";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Button from "../button";
+import { addFavorite, removeFavorite, isFavorite } from "../../utils/favorite";
 export default function Details() {
-  const { id } = useParams(); // grabs movie id from URL
+  const [favorite, setFavorite] = useState(false);
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +15,9 @@ export default function Details() {
     async function loadMovie() {
       try {
         const data = await fetchMovie(id);
+
         setMovie(data);
+        setFavorite(isFavorite(data.id));
       } catch (error) {
         console.error("Error loading movie:", error);
       } finally {
@@ -23,13 +27,26 @@ export default function Details() {
     loadMovie();
   }, [id]);
 
+  const toggleFavorite = () => {
+    if (favorite) {
+      removeFavorite(movie.id);
+      setFavorite(false);
+    } else {
+      addFavorite(movie);
+      setFavorite(true);
+    }
+  };
   if (loading) return <p className=" text-center">Loading...</p>;
   if (!movie) return <p className=" text-center">Movie not found</p>;
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="relative h-72 w-full shadow">
         <img
-          src={movie.poster_url}
+          src={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+              : "https://via.placeholder.com/500x750?text=No+Image"
+          }
           alt={movie.title}
           className="object-cover w-full h-full  "
         />
@@ -88,9 +105,9 @@ export default function Details() {
               <strong className="text-gray-800">Genre:</strong>
               {""}{" "}
               <span className="text-gray-600">
-                {Array.isArray(movie.genres)
-                  ? movie.genres.join(", ")
-                  : movie.genres}
+                {movie.genres && movie.genres.length > 0
+                  ? movie.genres.map((genre) => genre.name).join(", ")
+                  : "N/A"}
               </span>
             </p>
             <p>
@@ -98,21 +115,20 @@ export default function Details() {
               <span className="text-gray-600">{movie.release_date}</span>
             </p>
             <p>
-              <strong className="text-gray-800">Duration:</strong>{" "}
-              <span className="text-gray-600">
-                {movie.duration_minutes} min
-              </span>
+              <strong className="text-gray-800">popularity:</strong>{" "}
+              <span className="text-gray-600">{movie.popularity}</span>
             </p>
-            <p>
+            {/* <p>
               <strong className="text-gray-800">Casts:</strong>{" "}
               <span className="text-gray-600">
                 {Array.isArray(movie.cast) ? movie.cast.join(", ") : movie.cast}
               </span>{" "}
-            </p>
+            </p> */}
           </div>
           <Button
-            title="+ Add To Favorite"
-            className="bg-gradient-to-r from-primary to-primary-light hover:bg-primary text-white py-3 px-4 rounded-full shadow-lg transition"
+            onClick={toggleFavorite}
+            title={favorite ? "Remove from Favorites" : "+ Add To Favorite"}
+            className="bg-gradient-to-r from-primary to-primary-light hover:bg-primary font-bold text-white py-3 px-4 rounded-full shadow-lg transition"
           />
         </div>
       </div>
