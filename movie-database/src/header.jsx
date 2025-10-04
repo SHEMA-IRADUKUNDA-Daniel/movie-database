@@ -1,11 +1,36 @@
 import { Link } from "react-router-dom";
 import Search from "./search";
 import { useState } from "react";
-
+import { getMovies } from "./api/movies";
+import { useEffect } from "react";
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const delayDebounce = setTimeout(async () => {
+      if (search.trim().length > 1) {
+        setLoading(true);
+        try {
+          const data = await getMovies(1, search);
+          const filtered = data.results.filter((movie) =>
+            movie.title.toLowerCase().includes(search.toLowerCase())
+          );
+          setResults(filtered);
+        } catch (error) {
+          console.error("Search error:", error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setResults([]);
+      }
+    }, 400);
+
+    return () => clearTimeout(delayDebounce);
+  }, [search]);
   return (
     <header className=" w-full bg-gradient-to-r from-primary to-primary-light h-[100px] shadow-lg">
       <div className="flex flex-row h-full items-center justify-between px-6  max-w-7xl mx-auto gap-10 relative">
@@ -29,9 +54,43 @@ export default function NavBar() {
           value={search}
           onChange={setSearch}
           className={
-            "w-full rounded-full bg-white  text-gray-600 border border-primary placeholder-primary/60 px-4 md:px-7 py-2 focus:outline-none  focus:primary-light"
+            "relative w-full rounded-full bg-white  text-gray-600 border border-primary placeholder-primary/60 px-4 md:px-7 py-2 focus:outline-none  focus:primary-light"
           }
         />
+        {search && results.length > 0 && (
+          <ul className="absolute top-20 right-0 w-80 bg-white shadow-lg rounded-lg max-h-80 overflow-y-auto z-50">
+            {results.map((movie) => (
+              <li key={movie.id}>
+                <Link
+                  to={`/movie/${movie.id}`}
+                  onClick={() => {
+                    setSearch("");
+                    setResults([]);
+                  }}
+                  className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100"
+                >
+                  <img
+                    src={movie.poster_url || movie.poster_path}
+                    alt={movie.title}
+                    className="w-10 h-14 object-cover rounded"
+                  />
+                  <span className="text-gray-800 text-sm font-medium">
+                    {movie.title}{" "}
+                    <span className="text-gray-500 text-xs">
+                      ({movie.release_date?.slice(0, 4)})
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {loading && (
+          <div className="absolute top-20 right-0 w-80 z-50 bg-white shadow-md rounded-lg p-4 text-gray-600 text-sm">
+            Searching...
+          </div>
+        )}
 
         <button
           onClick={() => setMobileOpen((o) => !o)}

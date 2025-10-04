@@ -7,8 +7,6 @@ import routes from "../route/routes.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={routes}>
-      <App />
-    </RouterProvider>
+    <RouterProvider router={routes} />
   </StrictMode>
 );

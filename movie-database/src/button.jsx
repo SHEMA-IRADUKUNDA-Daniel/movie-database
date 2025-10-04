@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Button({ title, className, to }) {
+export default function Button({ title, className, to, onClick }) {
   return (
-    <Link to={to} className={className}>
+    <Link to={to} onClick={onClick} className={className}>
       {title}
     </Link>
   );

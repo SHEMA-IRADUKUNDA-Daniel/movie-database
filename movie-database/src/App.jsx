@@ -1,23 +1,12 @@
 import NavBar from "./header";
-import Search from "./search";
 import Button from "./button";
-import Footer from "./footer";
-import { useState } from "react";
 
 function App() {
-  const [search, setSearch] = useState("");
   return (
     <div className="flex-1 max-w-7xl mx-auto px-6 w-full">
       <div className="flex flex-col content-center items-center py-4  justify-center">
         <h1 className="text-3xl font-bold text-primary/80 my-6">MovieDB App</h1>
-        <Search
-          value={search}
-          onChange={setSearch}
-          className={
-            "w-full md:w-[459px] shadow rounded-full bg-white text-gray-600 border border-primary-light placeholder-primary/60 px-7 py-2 focus:outline-none  focus:primary-light"
-          }
-        />
-        {search}
+
         <h2 className="text-gray-600 text-xl font-semibold my-6">
           Moviedb.com - Your better place to discover movies you’ll love.
         </h2>
