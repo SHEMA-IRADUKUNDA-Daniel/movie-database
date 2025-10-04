@@ -1,9 +1,11 @@
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../src/home";
 import Favorite from "../src/favorite";
 import Layout from "../src/Layout";
-import { createBrowserRouter } from "react-router-dom";
 import Login from "../src/login";
 import App from "../src/App";
+import banner from "../src/banner";
+import Details from "../src/movie/[id]";
 
 const routes = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const routes = createBrowserRouter([
       {
         path: "/login",
         Component: Login,
+      },
+      {
+        path: "/banner",
+        Component: banner,
+      },
+      {
+        path: "movie/:id",
+        Component: Details,
       },
     ],
   },
