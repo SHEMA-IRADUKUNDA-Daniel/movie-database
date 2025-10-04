@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { getMovies } from "./api/tmdb.jsx";
 import Button from "./button";
 import Banner from "./banner";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasNext, setHasNext] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -41,6 +44,7 @@ export default function Home() {
               <div
                 key={movie.id}
                 className="my-2 mx-2 md:max-w-47 max-w-40 relative cursor-pointer"
+                onClick={() => navigate(`/movie/${movie.id}`)}
               >
                 <div to={`/movie/${movie.id}`} className="relative group">
                   <img

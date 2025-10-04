@@ -75,7 +75,10 @@ export default function Details() {
 
       <div className=" flex items-center justify-center py-10 flex-col md:flex-row max-w-5xl mx-auto p-6 md:flex md:gap-10">
         <div className=" mb-6 md:mb-0">
-          <Link className="absolute md:hidden hover:bg-primary transition left-6 md:left-6 bg-gradient-to-r from-primary to-primary-light p-2 rounded-full top-30 z-20 text-white">
+          <Link
+            to={"/home"}
+            className="absolute md:hidden hover:bg-primary transition left-6 md:left-6 bg-gradient-to-r from-primary to-primary-light p-2 rounded-full top-30 z-20 text-white"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
