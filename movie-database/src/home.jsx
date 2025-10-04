@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getMovies } from "./api/tmdb";
+import { getMovies } from "./api/tmdb.jsx";
 import Button from "./button";
 import Banner from "./banner";
 
