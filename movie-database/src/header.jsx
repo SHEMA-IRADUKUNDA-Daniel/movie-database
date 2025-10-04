@@ -14,16 +14,22 @@ export default function NavBar() {
         </Link>
         <nav className="hidden md:flex flex-1 justify-center  ">
           <ul className="text-white  font-bold flex justify-between gap-20">
-            <Link to={"/home"}>Home</Link>
-            <Link to={"/favorite"}>Favorite</Link>
-            <Link to={"/login"}>Login</Link>
+            <Link to={"/home"} className="hover:text-white/70 transition">
+              Home
+            </Link>
+            <Link to={"/favorite"} className="hover:text-white/70 transition">
+              Favorite
+            </Link>
+            <Link to={"/login"} className="hover:text-white/70 transition">
+              Login
+            </Link>
           </ul>
         </nav>
         <Search
           value={search}
           onChange={setSearch}
           className={
-            "w-full rounded-full bg-white text-primary border border-primary placeholder-primary/60 px-4 md:px-7 py-2 focus:outline-none focus:ring-2 focus:border-primary-light"
+            "w-full rounded-full bg-white  text-gray-600 border border-primary placeholder-primary/60 px-4 md:px-7 py-2 focus:outline-none  focus:primary-light"
           }
         />
 
