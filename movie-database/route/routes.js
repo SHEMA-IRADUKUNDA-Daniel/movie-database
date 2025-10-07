@@ -6,6 +6,7 @@ import Login from "../src/login";
 import App from "../src/App";
 import banner from "../src/banner";
 import Details from "../src/movie/[id]";
+import Register from "../src/register";
 
 const routes = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const routes = createBrowserRouter([
       {
         path: "movie/:id",
         Component: Details,
+      },
+      {
+        path: "register",
+        Component: Register,
       },
     ],
   },
