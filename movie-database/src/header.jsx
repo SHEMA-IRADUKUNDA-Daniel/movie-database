@@ -58,7 +58,7 @@ export default function NavBar() {
           }
         />
         {search && results.length > 0 && (
-          <ul className="absolute top-20 right-0 w-80 bg-white shadow-lg rounded-lg max-h-80 overflow-y-auto z-50">
+          <ul className="absolute top-20 right-5 w-80 bg-white shadow-lg rounded-lg max-h-80 overflow-y-auto z-50">
             {results.map((movie) => (
               <li key={movie.id}>
                 <Link
@@ -91,7 +91,7 @@ export default function NavBar() {
         )}
 
         {loading && (
-          <div className="absolute top-20 right-0 w-80 z-50 bg-white shadow-md rounded-lg p-4 text-gray-600 text-sm">
+          <div className="absolute top-20 right-5 w-80 z-50 bg-white shadow-md rounded-lg p-4 text-gray-600 text-sm">
             Searching...
           </div>
         )}
