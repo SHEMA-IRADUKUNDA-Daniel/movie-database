@@ -13,7 +13,11 @@ export default function Register() {
         />
         <div className="absolute inset-0 bg-black/60 " />
       </div>
-      <div className="bg-gradient-to-r mb-5 mx-10 from-primary/10 to-primary-light/20 rounded-2xl p-6 w-[90%] max-w-md shadow-lg">
+
+      <div className="bg-gradient-to-r my-5 mx-10 from-primary/10 to-primary-light/20 rounded-2xl p-6 w-[90%] max-w-md shadow-lg">
+
+     
+
         <h2 className="text-center mb-5 font-bold text-primary/80">
           Register Form
         </h2>
