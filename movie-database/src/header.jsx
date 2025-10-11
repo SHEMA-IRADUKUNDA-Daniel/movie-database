@@ -89,7 +89,15 @@ export default function NavBar() {
             ))}
           </ul>
         )}
-
+        {search &&
+          !loading &&
+          results.length === 0 &&
+          search.trim().length > 1 && (
+            <div className="absolute top-20 right-5 w-80 z-50 bg-white shadow-md rounded-lg p-4 text-gray-600 text-sm">
+              No movies found for "<span className="font-medium">{search}</span>
+              "
+            </div>
+          )}
         {loading && (
           <div className="absolute top-20 right-5 w-80 z-50 bg-white shadow-md rounded-lg p-4 text-gray-600 text-sm">
             Searching...
