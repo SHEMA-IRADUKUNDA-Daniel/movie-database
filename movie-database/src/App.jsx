@@ -17,7 +17,7 @@ function App() {
         />
       </div>
       <h2 className="text-primary/80 mb-3 ">
-        MovieDB - Discover Free Movies to Watch Online| movieapp.com
+        MovieDB - Discover Free Movies to Watch Online| moviedb.com
       </h2>
       <p className="text-gray-600 mb-10">
         Cord-cutting is becoming a huge thing these days. People around the
