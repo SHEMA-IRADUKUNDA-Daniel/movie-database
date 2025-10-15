@@ -32,14 +32,14 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <h3 className="max-w-7xl mx-auto md:px-6 w-full px-3 my-5 text-gray-800 text-3xl">
+      <h3 className="max-w-7xl mx-auto md:px-6 w-full px-6 my-5 text-gray-800 text-3xl">
         Movies
       </h3>
       <div className=" flex-1 max-w-7xl mx-auto md:px-6 w-full my-5">
         {loading ? (
           <p className="text-center text-gray-700">Loading movies...</p>
         ) : (
-          <div className="flex flex-wrap  justify-center sm:justify-start">
+          <div className="flex flex-wrap mx-6  justify-center sm:justify-start">
             {movies.map((movie) => (
               <div
                 key={movie.id}
