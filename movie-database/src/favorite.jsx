@@ -1,10 +1,31 @@
-import { getFavorites } from "../utils/favorite";
+import { useState } from "react";
+import { getFavorites, removeFavorite } from "../utils/favorite";
 import Button from "./button";
 export default function Favorite() {
-  const favorites = getFavorites();
+  const [favorites, setFavorite] = useState(getFavorites());
+  const removeFavorites = (movieId) => {
+    removeFavorite(movieId);
+    setFavorite(getFavorites());
+  };
 
   if (favorites.length === 0)
     return <p className="text-center p-10">No favorite movies yet.</p>;
+  const CloseIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+      className={`w-5 h-5 `}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  );
 
   return (
     <>
@@ -32,6 +53,15 @@ export default function Favorite() {
                   e.currentTarget.src = "/placeholder-movie.jpg";
                 }}
               />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  removeFavorites(movie.id);
+                }}
+                className="absolute top-1 left-1 cursor-pointer z-100 bg-red-400 hover:bg-red-600 text-white p-4 rounded-sm text-center font-bold"
+              >
+                <CloseIcon className="text-white" />
+              </button>
               <p className="absolute top-2 right-2 flex items-center gap-1 bg-black bg-opacity-70 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md">
                 {movie.vote_average.toFixed(1) || "9"}
                 <svg
