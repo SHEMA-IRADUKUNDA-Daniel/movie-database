@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./button";
+import Button from "./components/common/button";
 import { Link } from "react-router-dom";
 
 export default function Login() {

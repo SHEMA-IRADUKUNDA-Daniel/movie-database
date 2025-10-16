@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchMovie } from "../api/tmdb";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Button from "../button";
+import Button from "../components/common/button";
 import { addFavorite, removeFavorite, isFavorite } from "../../utils/favorite";
 export default function Details() {
   const [favorite, setFavorite] = useState(false);

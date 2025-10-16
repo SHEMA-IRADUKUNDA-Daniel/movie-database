@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Search from "./search";
+import Search from "../common/search";
 import { useState } from "react";
-import { getMovies } from "./api/tmdb";
+import { getMovies } from "../../api/tmdb";
 import { useEffect } from "react";
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);

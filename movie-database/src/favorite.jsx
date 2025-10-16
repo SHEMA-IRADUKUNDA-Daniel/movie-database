@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getFavorites, removeFavorite } from "../utils/favorite";
-import Button from "./button";
+import Button from "./components/common/button";
 export default function Favorite() {
   const [favorites, setFavorite] = useState(getFavorites());
   const removeFavorites = (movieId) => {
