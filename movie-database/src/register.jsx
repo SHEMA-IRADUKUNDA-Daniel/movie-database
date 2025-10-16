@@ -1,8 +1,27 @@
 import React from "react";
 import Button from "./components/common/button";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Register() {
+  const [pageVisible, setPageVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageVisible(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (!pageVisible) {
+    return (
+      <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-gray-700">Loading...</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className=" pr-0 md:pr-30 gap-10 md:flex-row flex-col   flex items-center justify-center ">
       <div className="relative">
