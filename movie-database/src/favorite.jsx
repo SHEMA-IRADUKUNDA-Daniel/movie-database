@@ -1,8 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getFavorites, removeFavorite } from "../utils/favorite";
 import Button from "./components/common/button";
 export default function Favorite() {
   const [favorites, setFavorite] = useState(getFavorites());
+  const [pageVisible, setPageVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageVisible(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (!pageVisible) {
+    return (
+      <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-gray-700">Loading...</p>
+        </div>
+      </div>
+    );
+  }
   const removeFavorites = (movieId) => {
     removeFavorite(movieId);
     setFavorite(getFavorites());

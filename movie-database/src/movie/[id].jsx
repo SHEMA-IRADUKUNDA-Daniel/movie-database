@@ -10,6 +10,14 @@ export default function Details() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [pageVisible, setPageVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageVisible(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     async function loadMovie() {
@@ -36,6 +44,17 @@ export default function Details() {
       setFavorite(true);
     }
   };
+
+  if (!pageVisible) {
+    return (
+      <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-gray-700">Loading...</p>
+        </div>
+      </div>
+    );
+  }
   if (loading) return <p className=" text-center">Loading...</p>;
   if (!movie) return <p className=" text-center">Movie not found</p>;
   return (
