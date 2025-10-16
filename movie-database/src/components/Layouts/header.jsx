@@ -43,7 +43,7 @@ export default function NavBar() {
               Home
             </Link>
             <Link to={"/favorite"} className="hover:text-white/70 transition">
-              Favorite
+              Favorites
             </Link>
             <Link to={"/login"} className="hover:text-white/70 transition">
               Login
