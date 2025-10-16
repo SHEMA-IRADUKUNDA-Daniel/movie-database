@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../src/home";
 import Favorite from "../src/favorite";
-import Layout from "../src/Layout";
+import Layout from "../src/components/Layouts/Layout";
 import Login from "../src/login";
 import App from "../src/App";
-import banner from "../src/banner";
+import banner from "../src/components/common/banner";
 import Details from "../src/movie/[id]";
 import Register from "../src/register";
 

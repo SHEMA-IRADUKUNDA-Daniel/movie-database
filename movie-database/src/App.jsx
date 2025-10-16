@@ -1,5 +1,4 @@
-import NavBar from "./header";
-import Button from "./button";
+import Button from "./components/common/button";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getMovies } from "./api/tmdb.jsx";
-import Button from "./button";
-import Banner from "./banner";
+import Button from "./components/common/button.jsx";
+import Banner from "./components/common/banner.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./button";
+import Button from "./components/common/button";
 import { Link } from "react-router-dom";
 
 export default function Register() {
@@ -15,9 +15,6 @@ export default function Register() {
       </div>
 
       <div className="bg-gradient-to-r my-5 mx-10 from-primary/10 to-primary-light/20 rounded-2xl p-6 w-[90%] max-w-md shadow-lg">
-
-     
-
         <h2 className="text-center mb-5 font-bold text-primary/80">
           Register Form
         </h2>
