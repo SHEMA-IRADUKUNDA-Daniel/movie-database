@@ -39,11 +39,11 @@ export default function Home() {
         {loading ? (
           <p className="text-center text-gray-700">Loading movies...</p>
         ) : (
-          <div className="flex flex-wrap mx-6  justify-center sm:justify-start">
+          <div className="flex flex-wrap mx-4  justify-center sm:justify-start">
             {movies.map((movie) => (
               <div
                 key={movie.id}
-                className="my-2 mx-2 md:max-w-47 max-w-40 relative cursor-pointer"
+                className="my-2 mx-2 md:max-w-45 max-w-38 relative cursor-pointer"
                 onClick={() => navigate(`/movie/${movie.id}`)}
               >
                 <div to={`/movie/${movie.id}`} className="relative group">
