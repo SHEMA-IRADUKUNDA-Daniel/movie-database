@@ -107,7 +107,7 @@ The primary objectives are:
 4. **Version Control**
    - Regular descriptive commits
    - Organized repository structure following best practices
-5. **Deployment
+5. **Deployment**
 
-The project is deployed on Vercel.
-👉 Live Demo: https://movie-database-two-kappa.vercel.app/
+   The project is deployed on Vercel.
+   👉 Live Demo: https://movie-database-two-kappa.vercel.app/
