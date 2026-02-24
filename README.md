@@ -1,4 +1,4 @@
-# Project Capstone – Movie Database 
+# Movie Database 
 
 ## Overview
 
@@ -53,7 +53,7 @@ The primary objectives are:
 4. **Responsive & Interactive UI**
    - Fully responsive UI with Tailwind CSS utility classes
    - Movie dashboard with trending and recommended movies
-   - Smooth interactions including hover effects and animations
+   - Smooth interactions, including hover effects and animations
 
 ---
 
