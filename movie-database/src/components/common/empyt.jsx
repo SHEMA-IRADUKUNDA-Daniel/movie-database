@@ -1,10 +1,11 @@
 import React from "react";
+import EmptyImage from "../../assets/empty.svg";
 import { Link } from "react-router-dom";
 export default function EmptyState({ onAddClick }) {
   return (
     <div className="flex flex-col items-center my-5 justify-center text-center text-gray-700 px-4">
       <img
-        src="src/assets/empty.svg"
+        src={EmptyImage}
         alt="Empty state"
         className="w-64 mb-6 opacity-90"
       />
