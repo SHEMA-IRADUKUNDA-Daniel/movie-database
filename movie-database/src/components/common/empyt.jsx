@@ -19,7 +19,7 @@ export default function EmptyState({ onAddClick }) {
         to="/home"
         className="px-8 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-full hover:bg-primary/80 transition font-semibold text-lg"
       >
-        Add Favorites Movies
+        Add Favorite Movies
       </Link>
     </div>
   );
