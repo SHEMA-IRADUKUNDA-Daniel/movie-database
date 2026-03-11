@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getFavorites, removeFavorite } from "../utils/favorite";
 import Button from "./components/common/button";
+import EmptyState from "./components/common/empyt";
 export default function Favorite() {
   const [favorites, setFavorite] = useState(getFavorites());
   const [pageVisible, setPageVisible] = useState(false);
@@ -26,8 +27,7 @@ export default function Favorite() {
     setFavorite(getFavorites());
   };
 
-  if (favorites.length === 0)
-    return <p className="text-center p-10">No favorite movies yet.</p>;
+  if (favorites.length === 0) return <EmptyState />;
   const CloseIcon = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
